@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1023828266092',
     projectId: 'testing-99a42',
     storageBucket: 'testing-99a42.firebasestorage.app',
-    iosClientId: '1023828266092-tbchh39gmb2c0q16ppaeqg589hn59jb1.apps.googleusercontent.com',
+    iosClientId:
+        '1023828266092-tbchh39gmb2c0q16ppaeqg589hn59jb1.apps.googleusercontent.com',
     iosBundleId: 'com.example.authtask',
   );
 
@@ -80,5 +81,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'testing-99a42.firebasestorage.app',
     measurementId: 'G-J2YTNW313K',
   );
-
 }
