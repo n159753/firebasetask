@@ -13,9 +13,9 @@ final class SignupSuccess extends SignupState {
 }
 
 final class SignupError extends SignupState {
-  final String? message; // رسالة عامة تظهر SnackBar
-  final String? emailError; // يظهر تحت TextFormField
-  final String? passwordError; // يظهر تحت TextFormField
+  final String? message; 
+  final String? emailError; 
+  final String? passwordError; 
 
   SignupError({this.message, this.emailError, this.passwordError});
 }

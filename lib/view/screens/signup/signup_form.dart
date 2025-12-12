@@ -1,6 +1,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:authtask/controller/signup_cubit/signup_cubit.dart';
 import 'package:authtask/view/screens/home_screen.dart';
+import 'package:authtask/view/widgets/button_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,31 +93,23 @@ class _SignupFormState extends State<SignupForm> {
                   ),
 
                   state is SignupLoading
-                      ? CircularProgressIndicator()
-                      : ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              BlocProvider.of<SignUpCubit>(context).signUp(
+                    ? const CircularProgressIndicator()
+                    : ButtonWidget(
+                      formKey: _formKey, 
+                      emailController: _emailController, 
+                      passwordController: _passwordController, 
+                      btntxt:"Sign Up",
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                            BlocProvider.of<SignUpCubit>(context).signUp(
                                 email: _emailController.text.trim(),
                                 password: _passwordController.text.trim(),
-                              );
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(300, 45),
-                            backgroundColor: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadiusGeometry.circular(8),
-                            ),
-                          ),
-                          child: Text(
-                            "Sign Up",
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                            );
+                    
+                        }
+                    
+                    },),
+
                 ],
               ),
             );

@@ -1,6 +1,7 @@
 import 'package:authtask/controller/login_cubit/login_cubit.dart';
 import 'package:authtask/controller/login_cubit/login_cubit.dart';
 import 'package:authtask/view/screens/home_screen.dart';
+import 'package:authtask/view/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../widgets/text_from_field_widget.dart';
@@ -87,37 +88,28 @@ class _LoginFormState extends State<LoginForm> {
                       hinttxt: 'Enter your password',
                       errorText: passwordError,
                       controler: _passwordController,
+                      forgotpass: "forgot password?",
                     ),
                   ],
                 ),
 
                 state is LoginLoading
                     ? const CircularProgressIndicator()
-                    : ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
+                    : ButtonWidget(
+                      formKey: _formKey, 
+                      emailController: _emailController, 
+                      passwordController: _passwordController, 
+                      btntxt:"Sign In",
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
                             context.read<LoginCubit>().login(
                               email: _emailController.text.trim(),
                               password: _passwordController.text.trim(),
                             );
-                          }
-                        },
-
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(300, 45),
-                          backgroundColor: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(8),
-                          ),
-                        ),
-                        child: Text(
-                          "Sign In",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                      ),
+                    
+                        }
+                    
+                    },),
               ],
             ),
           );
@@ -126,3 +118,7 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+
+
+
+

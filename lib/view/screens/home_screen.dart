@@ -1,4 +1,5 @@
 import 'package:authtask/view/screens/login/login_screen.dart';
+import 'package:authtask/view/widgets/button_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,32 +19,47 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          ElevatedButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (_) => const LoginScreen()),
-                (route) => false,
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(300, 45),
-              backgroundColor: Colors.blue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusGeometry.circular(8),
-              ),
-            ),
-            child: Text(
-              "Sign out",
-              style: TextStyle(fontFamily: 'Poppins', color: Colors.white),
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ButtonWidget(
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginScreen()),
+                    (route) => false,
+                  );
+                },
+                btntxt: "Sign Out",  )
+              // ElevatedButton(
+              //   onPressed: () async {
+              //     await FirebaseAuth.instance.signOut();
+              //     Navigator.pushAndRemoveUntil(
+              //       context,
+              //       MaterialPageRoute(builder: (_) => const LoginScreen()),
+              //       (route) => false,
+              //     );
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     minimumSize: Size(300, 45),
+              //     backgroundColor: Colors.blue,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadiusGeometry.circular(8),
+              //     ),
+              //   ),
+              //   child: Text(
+              //     "Sign out",
+              //     style: TextStyle(fontFamily: 'Poppins', color: Colors.white),
+              //   ),
+              // ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

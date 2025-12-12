@@ -10,6 +10,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final Function(String)? onchanged;
   //  final String? Function(String?) validator;
   final String? errorText;
+  final String forgotpass;
 
   const TextFormFieldWidget({
     super.key,
@@ -20,7 +21,8 @@ class TextFormFieldWidget extends StatefulWidget {
     required this.hinttxt,
     this.onchanged,
     //  required this.validator,
-    this.errorText,
+    this.errorText, 
+    this.forgotpass ="",
   });
 
   @override
@@ -37,28 +39,31 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       spacing: 8,
       children: [
         widget.isPassword
-            ? Row(             
-              mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.label,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
+            ? Container(
+              width: 300,
+              child: Row(             
+                mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.label,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 120,),
-                  Text(
-                    "forgot password?",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.blue,
-                      fontFamily: 'Poppins',
+                    SizedBox(width: 120,),
+                    Text(
+                      widget.forgotpass,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blue,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
-                  ),
-                ],
-              )
+                  ],
+                ),
+            )
             : Container(
               width: 300,
               child: Row(
